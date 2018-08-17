@@ -1,0 +1,6 @@
+<view class="web_bg">
+  <view class="window1_view">
+    <button class="btn" hover-class="btn_hover" wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">开始选择</button>
+    <view wx:else>请升级微信版本</view>
+  </view>
+</view>

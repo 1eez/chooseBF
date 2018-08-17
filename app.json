@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/name/name1",
+    "pages/welcome",
+    "pages/index/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fd8b7a",
+    "navigationBarTitleText": "爱你还是他",
+    "navigationBarTextStyle": "white"
+  }
+}

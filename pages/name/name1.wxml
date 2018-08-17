@@ -1,0 +1,27 @@
+<view class="web_bg">
+
+  <view class="Text1_view">
+    <view class="Text1_class">
+      请输入男一号的姓名或代号
+    </view>
+  </view>
+
+  <view class="box1_view">
+    <input confirm-type="done" maxlength="10" focus="true" cursor='3' bindinput="bindNameInput" placeholder="　或者点右侧随机生成" value="{{NickName}}"/>
+    <image style="width: 50px; height: 50px;" bindtap="GetRndName" mode="aspectFit" src="../../images/Dice1.gif"></image>
+  </view>
+
+  <view class="Text2_view">
+    <view class="Text1_class">
+      请输入男一号的年龄
+    </view>
+  </view>
+
+  <view class="box1_view">
+      <input type="number" bindinput="bindAgeInput" placeholder="　点此输入年龄" />
+          <image style="width: 50px; height: 50px;" mode="aspectFit" ></image>
+  </view>
+
+    <button class="btn" hover-class="btn_hover" >下一步</button>
+
+</view>

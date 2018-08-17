@@ -1,0 +1,69 @@
+/* pages/name/name.wxss */
+.web_bg {  /*这句是定义背景图片*/
+  position:fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height:100%;
+  z-index:-10;
+
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center 0;
+  background-size:100%;
+  -moz-background-size:100% 100%;
+  background-image: url(https://love.nidele.com/images/namebg.jpg)
+}
+
+.Text1_view { /*第一行文字样式 为了把按钮放在距离顶部200的位置，核心是最后一句*/
+   display: flex;
+   flex-direction: column;
+   align-items: left;
+   margin-top:200rpx;
+}
+
+.Text1_class{
+  font-size: 32rpx;
+  font-family: "黑体";
+  font-weight: bold;
+  color: #fff;
+  text-align:left;
+  margin-left: 190rpx;
+
+  /*改成block类型才能设置宽高
+  display: block;
+  width: 800rpx;
+  height: 50rpx;*/
+  /*设置文本垂直方向居中
+  line-height: 50rpx;*/
+}
+
+.box1_view { /*第一行文字样式 为了把按钮放在距离顶部200的位置，核心是最后一句*/
+   width: 400rpx;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   margin-top:40rpx;
+   margin-left: 180rpx;
+   background-color: #fff;
+   font-size: 32rpx;
+}
+
+.Text2_view { /*第一行文字样式 为了把按钮放在距离顶部200的位置，核心是最后一句*/
+   display: flex;
+   flex-direction: column;
+   align-items: left;
+   margin-top:60rpx;
+}
+
+
+.btn { /*这句是按钮的样式，核心是第一句，宽度不要沾满整行*/
+  margin-top: 250rpx;
+   width: 50%;
+   background-color:#ff634b;
+   color: #fff;
+}
+
+.btn_hover { /*这句是按钮按下去后的样式*/
+  background-color:#fd8b7a96;
+}
