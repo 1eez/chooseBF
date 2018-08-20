@@ -58,16 +58,21 @@ Page({
       return
     }
 
+    page.setData({
+      NickName: page.data.NickName.replace(/(^\s*)|(\s*$)/g, ''),
+      Age: page.data.Age.replace(/(^\s*)|(\s*$)/g, ''),
+    })
+        
     wx.request({
       url: 'https://love.nidele.com/addSummary.php',
       data: {
         openid: page.data.openid,
-        Fsname1: page.data.NickName.replace(/(^\s*)|(\s*$)/g, ''),
-        Fsage1: page.data.Age.replace(/(^\s*)|(\s*$)/g, ''),
+        Fsname1: page.data.NickName,
+        Fsage1: page.data.Age,
       },
       success: function (res2) {
         wx.redirectTo({
-          url: '../index/index?openid=' + page.data.openid
+          url: '../index/index?openid=' + page.data.openid + '&name=' + page.data.NickName
         })
       }
     })

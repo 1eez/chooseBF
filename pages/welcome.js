@@ -49,6 +49,11 @@ Page({
                 Fucity: e.detail.userInfo.city,
                 Fulang: e.detail.userInfo.language,
               })
+              wx.redirectTo({
+                url: '../../name/name1?openid=' + page.data.openid
+              })
+
+              wx.hideLoading()
 
               wx.getSystemInfo({
                 success: function (res3) {  //getsysinfo success
@@ -65,12 +70,7 @@ Page({
                       page.setData({
                         FunetworkType: res4.networkType
                       })
-                      wx.redirectTo({
-                        url: '../../name/name1?openid=' + page.data.openid
-                      })
 
-                      wx.hideLoading()
-                      
                       wx.request({
                         url: 'https://love.nidele.com/addUser.php',
                         data: {

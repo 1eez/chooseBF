@@ -2,7 +2,8 @@
   "pages": [
     "pages/welcome",
     "pages/name/name1",
-    "pages/index/index"
+    "pages/index/index",
+    "pages/question/question"
   ],
   "window": {
     "backgroundTextStyle": "light",
