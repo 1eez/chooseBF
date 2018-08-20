@@ -22,80 +22,91 @@ Page({
   },
 
   onLoad: function () {
+
+  },
+
+  bindGetUserInfo: function (e) {
     var page = this
+
+    wx.showLoading({
+      title: '稍等片刻',
+    })
     wx.login({
-      success: function (res1) {
+      success: function (res1) {  //login success
         if (res1.code) {
           wx.request({
-          url: 'https://love.nidele.com/getOpenid.php',
-          data: {
-            code: res1.code
-          },
-            success: function (res2) {
-              page.data.openid = res2.data.Fopenid
+            url: 'https://love.nidele.com/getOpenid.php',
+            data: {
+              code: res1.code
+            },
+            success: function (res2) {  // request success
+              page.setData({
+                openid: res2.data.Fopenid,
+                Funickname: e.detail.userInfo.nickName,
+                Fugender: e.detail.userInfo.gender,
+                Fucountry: e.detail.userInfo.country,
+                Fuprovince: e.detail.userInfo.province,
+                Fucity: e.detail.userInfo.city,
+                Fulang: e.detail.userInfo.language,
+              })
+
+              wx.getSystemInfo({
+                success: function (res3) {  //getsysinfo success
+                  page.setData({
+                    Fubrand: res3.brand,
+                    Fumodel: res3.model,
+                    Fuwxlang: res3.language,
+                    Fuwxver: res3.version,
+                    Fuwxplatform: res3.platform,
+                    FuwxfontSize: res3.fontSizeSetting,
+                  })
+                  wx.getNetworkType({
+                    success: function (res4) {  //getnet success
+                      page.setData({
+                        FunetworkType: res4.networkType
+                      })
+                      wx.redirectTo({
+                        url: '../../name/name1?openid=' + page.data.openid
+                      })
+
+                      wx.hideLoading()
+                      
+                      wx.request({
+                        url: 'https://love.nidele.com/addUser.php',
+                        data: {
+                          openid: page.data.openid,
+                          Funickname: page.data.Funickname,
+                          Fugender: page.data.Fugender,
+                          Fucountry: page.data.Fucountry,
+                          Fuprovince: page.data.Fuprovince,
+                          Fucity: page.data.Fucity,
+                          Fulang: page.data.Fulang,
+                          Fubrand: page.data.Fubrand,
+                          Fumodel: page.data.Fumodel,
+                          Fuwxlang: page.data.Fuwxlang,
+                          Fuwxver: page.data.Fuwxver,
+                          Fuwxplatform: page.data.Fuwxplatform,
+                          FuwxfontSize: page.data.FuwxfontSize,
+                          FunetworkType: page.data.FunetworkType,
+                        },
+                        success: function (res2) {
+                          console.log(res2.data.Result)
+                        }
+                      })
+                    }
+                  })
+                }
+              });
+             
+              console.log(page.data.openid)
             }
-        })
+          })
         } else {
           console.log('登录失败！' + res1.errMsg)
         }
       }
     });
 
-
-    wx.getSystemInfo({
-      success: function (res) {
-        page.data.Fubrand = res.brand
-        page.data.Fumodel = res.model
-        page.data.Fuwxlang = res.language
-        page.data.Fuwxver = res.version
-        page.data.Fuwxplatform = res.platform
-        page.data.FuwxfontSize = res.fontSizeSetting
-      }
-    });
-
-    wx.getNetworkType({
-      success: function (res) {
-        page.data.FunetworkType = res.networkType
-      }
-    });
-
-  },
-
-  bindGetUserInfo: function (e) {
-    var page = this
-    this.setData({
-      Funickname: e.detail.userInfo.nickName,
-      Fugender: e.detail.userInfo.gender,
-      Fucountry: e.detail.userInfo.country,
-      Fuprovince: e.detail.userInfo.province,
-      Fucity: e.detail.userInfo.city,
-      Fulang: e.detail.userInfo.language,
-    })
-    wx.redirectTo({
-      url: '../../name/name1?openid=' + page.data.openid
-    })
-    wx.request({
-      url: 'https://love.nidele.com/addUser.php',
-      data: {
-        openid: page.data.openid,
-        Funickname: page.data.Funickname,
-        Fugender: page.data.Fugender,
-        Fucountry: page.data.Fucountry,
-        Fuprovince: page.data.Fuprovince,
-        Fucity: page.data.Fucity,
-        Fulang: page.data.Fulang,
-        Fubrand: page.data.Fubrand,
-        Fumodel: page.data.Fumodel,
-        Fuwxlang: page.data.Fuwxlang,
-        Fuwxver: page.data.Fuwxver,
-        Fuwxplatform: page.data.Fuwxplatform,
-        FuwxfontSize: page.data.FuwxfontSize,
-        FunetworkType: page.data.FunetworkType,
-      },
-      success: function (res2) {
-        console.log(res2.data.Result) 
-      }
-    })
   },
 
   /**
