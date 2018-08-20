@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/name/name1",
     "pages/welcome",
+    "pages/name/name1",
     "pages/index/index"
   ],
   "window": {

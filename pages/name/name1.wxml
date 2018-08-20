@@ -7,7 +7,7 @@
   </view>
 
   <view class="box1_view">
-    <input confirm-type="done" maxlength="10" focus="true" cursor='3' bindinput="bindNameInput" placeholder="　或者点右侧随机生成" value="{{NickName}}"/>
+    <input confirm-type="done" maxlength="10" focus="true" cursor='3' bindinput="bindNameInput" placeholder=" 或者点右侧随机生成" value="{{NickName}}"/>
     <image style="width: 50px; height: 50px;" bindtap="GetRndName" mode="aspectFit" src="../../images/Dice1.gif"></image>
   </view>
 
@@ -18,10 +18,10 @@
   </view>
 
   <view class="box1_view">
-      <input type="number" bindinput="bindAgeInput" placeholder="　点此输入年龄" />
+      <input type="number" bindinput="bindAgeInput" adjust-position="true" placeholder=" 点此输入年龄" value="{{Age}}"/>
           <image style="width: 50px; height: 50px;" mode="aspectFit" ></image>
   </view>
 
-    <button class="btn" hover-class="btn_hover" >下一步</button>
+    <button class="btn" hover-class="btn_hover" bindtap="sendName1">下一步</button>
 
 </view>

@@ -41,23 +41,6 @@ Page({
       }
     });
 
-    wx.getSetting({
-      success: function (res) {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-          wx.getUserInfo({
-            success: function (res) {
-              page.data.Funickname = res.userInfo.nickName
-              page.data.Fugender = res.userInfo.gender
-              page.data.Fucountry = res.userInfo.country
-              page.data.Fuprovince = res.userInfo.province
-              page.data.Fucity = res.userInfo.city
-              page.data.Fulang = res.userInfo.language
-            }
-          })
-        }
-      }
-    });
 
     wx.getSystemInfo({
       success: function (res) {
@@ -80,8 +63,16 @@ Page({
 
   bindGetUserInfo: function (e) {
     var page = this
+    this.setData({
+      Funickname: e.detail.userInfo.nickName,
+      Fugender: e.detail.userInfo.gender,
+      Fucountry: e.detail.userInfo.country,
+      Fuprovince: e.detail.userInfo.province,
+      Fucity: e.detail.userInfo.city,
+      Fulang: e.detail.userInfo.language,
+    })
     wx.redirectTo({
-      url: '../../index/index?openid=' + page.data.openid
+      url: '../../name/name1?openid=' + page.data.openid
     })
     wx.request({
       url: 'https://love.nidele.com/addUser.php',

@@ -22,7 +22,7 @@
    margin-top:200rpx;
 }
 
-.Text1_class{
+.Text1_class{ /*请输入男一号的姓名或代号这行的样式*/
   font-size: 32rpx;
   font-family: "黑体";
   font-weight: bold;
@@ -38,7 +38,7 @@
   line-height: 50rpx;*/
 }
 
-.box1_view { /*第一行文字样式 为了把按钮放在距离顶部200的位置，核心是最后一句*/
+.box1_view { /*输入姓名输入框的样式，可定义文字大小*/
    width: 400rpx;
    display: flex;
    flex-direction: row;
@@ -49,16 +49,16 @@
    font-size: 32rpx;
 }
 
-.Text2_view { /*第一行文字样式 为了把按钮放在距离顶部200的位置，核心是最后一句*/
+.Text2_view { /*请输入男一号的年龄这行的样式，核心是最后一句*/
    display: flex;
    flex-direction: column;
    align-items: left;
-   margin-top:60rpx;
+   margin-top:40rpx;
 }
 
 
 .btn { /*这句是按钮的样式，核心是第一句，宽度不要沾满整行*/
-  margin-top: 250rpx;
+  margin-top: 40rpx;
    width: 50%;
    background-color:#ff634b;
    color: #fff;
