@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/question/question",
     "pages/welcome",
     "pages/name/name1",
-    "pages/index/index",
-    "pages/question/question"
+    "pages/index/index"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,2 +1,20 @@
 <!--pages/question/question.wxml-->
-<text>pages/question/question.wxml</text>
+<view class="web_bg">
+
+  <view class="Question1_view">
+    <view class="Question1_class">
+      他当前的婚他当前的婚他当前的婚他当前的婚：
+    </view>
+  </view>
+
+
+    <button class="btn" hover-class="btn_hover" bindtap="tap">这里是第二个答案，第2个答案</button>
+    <button class="btn" hover-class="btn_hover" bindtap="tap">这里是第二个答案，第2个答案</button>
+    <button class="btn" hover-class="btn_hover" bindtap="tap">这里是第二个答案，第2个答案</button>
+    <button class="btn" hover-class="btn_hover" bindtap="tap">这里是第二个答案，第2个答案</button>
+    <button class="btn" hover-class="btn_hover" bindtap="tap">这里是第二个答案，第2个答案</button>
+
+
+
+
+</view>
