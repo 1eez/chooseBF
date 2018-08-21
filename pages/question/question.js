@@ -1,4 +1,3 @@
-// pages/question/question.js
 Page({
 
   /**
@@ -6,13 +5,51 @@ Page({
    */
   data: {
   
+    Result: '',
+    Fqid: '',
+    Fqtext:'',
+    Faid:'',
+    resultObj: {},
+    answerList: [],
+
+  },
+
+  getQuestion: function () {
+    var page = this
+    wx.request({
+      url: 'https://love.nidele.com/getQuestion.php',
+      data: {
+        Fdsid: '1'
+      },
+      success: function (res2) {
+        console.log(res2.data)
+        page.setData({
+          resultObj: res2.data,
+          Result: res2.data.Result,
+          Fqid: res2.data.Fqid,
+          Fqtext: res2.data.Fqtext,
+          answerList: res2.data.answerArr,
+        })
+      }
+    })
+
+  },
+
+  sendAnswer: function (e) {
+    var page = this
+    this.setData({
+      Faid: parseInt(e.currentTarget.dataset.index)
+    })
+    console.log(page.data.Faid)
+    console.log(page.data.Fqid)
+    
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+
   },
 
   /**
@@ -26,7 +63,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.getQuestion()
   },
 
   /**

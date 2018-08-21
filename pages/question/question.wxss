@@ -15,14 +15,14 @@
   background-image: url(https://love.nidele.com/images/questionbg.jpg)
 }
 
-.Question1_view { /*问题描述行的样式，最关键是最后一行表示距离上面多远*/
+.question1_view { /*问题描述行的样式，最关键是最后一行表示距离上面多远*/
    display: flex;
    flex-direction: column;
    align-items: left;
    margin-top:120rpx;
 }
 
-.Question1_class{ /*问题描述行的样式，主要定义字体相关的*/
+.question1_class{ /*问题描述行的样式，主要定义字体相关的*/
   font-size: 32rpx;
   font-family: "黑体";
   font-weight: bold;
@@ -39,7 +39,7 @@
 }
 
 
-.Answer1_view { /*答案描述行的样式，最关键是最后一行表示距离上面多远*/
+.answer1_view { /*答案描述行的样式，最关键是最后一行表示距离上面多远*/
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -67,4 +67,15 @@
 
 .btn_hover { /*这句是按钮按下去后的样式*/
   background-color:#fd8b7a96;
+}
+
+.remark1_view { /*"这不是我的考核项"，可定义文字大小*/
+  display: flex;
+  flex-direction: column;
+  text-decoration: underline;
+  align-items: center;
+  margin-top:50rpx;
+  font-size: 30rpx;
+  font-family: "黑体";
+  color: #fff;
 }
