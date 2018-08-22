@@ -1,0 +1,17 @@
+<view class="web_bg">
+
+  <view class="name1_view">
+    <view class="name1_class">
+      {{name1}}（{{age1}}岁）
+    </view>
+  </view>
+
+  <view class="name2_view">
+    <view class="name2_class">
+      {{name2}}（{{age2}}岁）
+    </view>
+  </view>
+
+    <button class="btn" hover-class="btn_hover" bindtap="getResult">开始分析</button>
+
+</view>

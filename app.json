@@ -1,10 +1,12 @@
 {
   "pages": [
-    "pages/question/question",
-    "pages/welcome",
+    "pages/welcome/welcome",
     "pages/name/name1",
-    "pages/index/index"
-    
+    "pages/question/question",
+    "pages/index/index",
+    "pages/name/name2",
+    "pages/result/analysis",
+    "pages/result/result"
   ],
   "window": {
     "backgroundTextStyle": "light",

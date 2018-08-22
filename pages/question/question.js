@@ -11,17 +11,25 @@ Page({
     Faid:'',
     resultObj: {},
     answerList: [],
+    openid: '',
+    Fsid: '1',
+    Nickname: '',
 
   },
 
   getQuestion: function () {
     var page = this
+    console.log('getQ'+page.data.Fsid),
+      console.log(page.data.Nickname),
+
     wx.request({
       url: 'https://love.nidele.com/getQuestion.php',
       data: {
-        Fdsid: '1'
+        Fdsid: page.data.Fsid,
+        Fdname: page.data.Nickname,
       },
       success: function (res2) {
+        console.log('getQuestion success')
         console.log(res2.data)
         page.setData({
           resultObj: res2.data,
@@ -40,8 +48,50 @@ Page({
     this.setData({
       Faid: parseInt(e.currentTarget.dataset.index)
     })
-    console.log(page.data.Faid)
-    console.log(page.data.Fqid)
+    wx.request({
+      url: 'https://love.nidele.com/addAnswer.php',
+      data: {
+        Fdsid: page.data.Fsid,
+        Fdname: page.data.Nickname,
+        Fdqid: page.data.Fqid,
+        Fdaid: page.data.Faid,
+      },
+      success: function (res2) {
+        console.log(res2.data)
+        if (res2.data.Result == 'ADD') {
+          console.log('SendA'+page.data.Fsid),
+          console.log(page.data.Nickname),
+
+            wx.request({
+              url: 'https://love.nidele.com/getQuestion.php',
+              data: {
+                Fdsid: page.data.Fsid,
+                Fdname: page.data.Nickname,
+              },
+              success: function (res2) {
+                console.log(res2.data)
+                if (res2.data.Result == 'SUCCESS') {
+                  page.setData({
+                    resultObj: res2.data,
+                    Result: res2.data.Result,
+                    Fqid: res2.data.Fqid,
+                    Fqtext: res2.data.Fqtext,
+                    answerList: res2.data.answerArr,
+                  })
+                }
+                if (res2.data.Result == 'EMPTY') {
+                  console.log('getQ = EMPTY' + page.data.openid)
+                  wx.redirectTo({
+                    url: '../name/name2?openid=' + page.data.openid + '&Fsid=' + page.data.Fsid + '&name=' + page.data.Nickname
+                  })
+                }
+
+              }
+            })
+
+        }
+      }
+    })
     
   },
 
@@ -49,7 +99,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      openid: options.openid,
+      Fsid: options.Fsid,
+      Nickname: options.name,
+    })
   },
 
   /**

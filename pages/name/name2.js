@@ -5,14 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-      openid: '',
-      NickName:'',
-      Age:'',
-      Fsid: '',
+    openid: '',
+    NickName: '',
+    Age: '',
+    Fsid: '',
+    name1: '',
 
   },
 
-  GetRndName: function() { //获得随机的男性代号
+  GetRndName: function () { //获得随机的男性代号
     var page = this
     wx.request({
       url: 'https://love.nidele.com/getNick.php',
@@ -26,7 +27,7 @@ Page({
       }
     })
   },
-  
+
   bindNameInput: function (e) {
     this.setData({
       NickName: e.detail.value
@@ -39,7 +40,7 @@ Page({
     })
   },
 
-  sendName1: function () { //获得男一号的姓名年龄后，写库表
+  sendName1: function () { //获得男二号的姓名年龄后，更新库表
     var page = this
 
     if (page.data.NickName == '') {
@@ -60,19 +61,30 @@ Page({
       return
     }
 
+    if (page.data.NickName == page.data.name1) {
+      wx.showToast({
+        title: '姓名与1号重复',
+        icon: 'loading',
+        duration: 2000
+      })
+      return
+    }
+
     page.setData({
       NickName: page.data.NickName.replace(/(^\s*)|(\s*$)/g, ''),
       Age: page.data.Age.replace(/(^\s*)|(\s*$)/g, ''),
     })
-        
+
     wx.request({
-      url: 'https://love.nidele.com/addSummary.php',
+      url: 'https://love.nidele.com/updateSummary.php',
       data: {
+        Fsid: page.data.Fsid,
         openid: page.data.openid,
-        Fsname1: page.data.NickName,
-        Fsage1: page.data.Age,
+        Fsname2: page.data.NickName,
+        Fsage2: page.data.Age,
       },
       success: function (res2) {
+        console.log('updateSummary over')
         page.setData({
           Fsid: res2.data.Fsid,
         })
@@ -90,9 +102,12 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      openid: options.openid
+      openid: options.openid,
+      Fsid: options.Fsid,
+      name1: options.name,
     })
-    console.log('name1 onload over: '+options.openid)
+    console.log('name2 onload over: ' + options.openid)
+    console.log('name2 onload over: ' + options.Fsid)
 
   },
 
@@ -100,7 +115,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
@@ -154,34 +169,34 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   }
 })

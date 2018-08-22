@@ -1,0 +1,17 @@
+<view class="web_bg">
+
+  <view class="name1_view">
+    <view class="name1_class">
+      {{name1}}：{{score1}}分
+    </view>
+  </view>
+
+  <view class="name2_view">
+    <view class="name2_class">
+      {{name2}}：{{score2}}分
+    </view>
+  </view>
+
+    <button class="btn" hover-class="btn_hover" bindtap="backIndex">再来一次</button>
+
+</view>

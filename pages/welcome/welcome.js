@@ -31,6 +31,7 @@ Page({
     wx.showLoading({
       title: '稍等片刻',
     })
+
     wx.login({
       success: function (res1) {  //login success
         if (res1.code) {
@@ -50,7 +51,7 @@ Page({
                 Fulang: e.detail.userInfo.language,
               })
               wx.redirectTo({
-                url: '../../name/name1?openid=' + page.data.openid
+                url: '../name/name1?openid=' + page.data.openid
               })
 
               wx.hideLoading()
@@ -90,7 +91,7 @@ Page({
                           FunetworkType: page.data.FunetworkType,
                         },
                         success: function (res2) {
-                          console.log(res2.data.Result)
+                          console.log('adduser over, user is: '+res2.data.Result)
                         }
                       })
                     }
@@ -98,7 +99,7 @@ Page({
                 }
               });
              
-              console.log(page.data.openid)
+              console.log('login over: '+page.data.openid)
             }
           })
         } else {

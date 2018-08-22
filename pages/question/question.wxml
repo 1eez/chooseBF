@@ -3,7 +3,7 @@
 
   <view class="question1_view">
     <view class="question1_class">
-      {{Fqtext}}
+      {{Nickname}}，{{Fqtext}}
     </view>
   </view>
 
