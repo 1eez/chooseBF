@@ -6,7 +6,8 @@
     "pages/index/index",
     "pages/name/name2",
     "pages/result/analysis",
-    "pages/result/result"
+    "pages/result/result",
+    "pages/mylist/mylist"
   ],
   "window": {
     "backgroundTextStyle": "light",

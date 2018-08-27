@@ -141,7 +141,7 @@ Page({
 
         if (res3.data.Result == 'RESULT') {
           wx.redirectTo({
-            url: '../result/result?Fsid=' + res3.data.Fsid
+            url: '../mylist/mylist?openid=' + page.data.openid
           })
         }
 
