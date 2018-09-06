@@ -5,14 +5,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    openid: '',
+    myList: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.setData({
+      openid: options.openid
+    })
+    console.log('mylist load over: ' + options.openid)
   },
 
   /**
@@ -26,7 +30,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var page = this
+
+      wx.request({
+        url: 'https://love.nidele.com/getMylist.php',
+        data: {
+          openid: page.data.openid,
+        },
+        success: function (res2) {
+          page.setData({
+            myList: res2.data.listArr,
+          })
+          console.log(res2.data.listArr)
+          console.log(page.data.myList)
+        }
+      })
   },
 
   /**

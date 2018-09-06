@@ -1,2 +1,21 @@
 <!--pages/mylist/mylist.wxml-->
-<text>pages/mylist/mylist.wxml</text>
+<view class="web_bg">
+
+
+  <view wx:for-items="{{myList}}" wx:key="{{item.id}}">
+			<view class="dish list_view flex-wrap flex-direction-row" data-dish="{{item.id}}">
+				<view class="flex-item">
+					<text class="title">编号{{item.Fsid}}：{{item.Fsname1}} vs {{item.Fsname2}}</text>
+					<p>{{item.Fsage1}}岁 vs {{item.Fsage2}}岁</p>
+				</view>
+				<view class="add-btn">查看，删除</view>
+			</view>
+
+	</view>
+
+
+
+    <button class="btn" hover-class="btn_hover" bindtap="getResult">再测一次</button>
+
+</view>
+
