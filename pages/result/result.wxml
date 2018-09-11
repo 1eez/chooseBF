@@ -12,6 +12,6 @@
     </view>
   </view>
 
-    <button class="btn" hover-class="btn_hover" bindtap="backIndex">再来一次</button>
+    <button class="btn" hover-class="btn_hover" bindtap="backMyList">返回我的列表</button>
 
 </view>

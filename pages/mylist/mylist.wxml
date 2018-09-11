@@ -3,19 +3,22 @@
 
 
   <view wx:for-items="{{myList}}" wx:key="{{item.id}}">
-			<view class="dish list_view flex-wrap flex-direction-row" data-dish="{{item.id}}">
+			<view class="line list_view flex-wrap flex-direction-row" data-dish="{{item.id}}">
 				<view class="flex-item">
-					<text class="title">编号{{item.Fsid}}：{{item.Fsname1}} vs {{item.Fsname2}}</text>
-					<p>{{item.Fsage1}}岁 vs {{item.Fsage2}}岁</p>
-				</view>
-				<view class="add-btn">查看，删除</view>
+					<text class="title1">测试{{item.Fsid}}：{{item.Fsname1}} vs {{item.Fsname2}}\n</text>
+          <text class="title2">　　　（{{item.Fsage1}}岁 vs {{item.Fsage2}}岁）</text>
+        </view>
+
+				  <view class="add-btn">
+            <button class="mini-btn1" type="primary" size="mini" bindtap="viewTest" data-index="{{item.Fsid}}">查看</button>
+            <button class="mini-btn1" type="warn" size="mini" bindtap="delTest" data-index="{{item.Fsid}}">删除</button>
+          </view>
+
 			</view>
 
 	</view>
 
-
-
-    <button class="btn" hover-class="btn_hover" bindtap="getResult">再测一次</button>
+    <button class="btn" hover-class="btn_hover" bindtap="startAgain">再测一次</button>
 
 </view>
 

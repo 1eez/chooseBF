@@ -15,8 +15,8 @@
   background-image: url(https://love.nidele.com/images/mylistbg.jpg)
 }
 
-.dish{
-	margin-left: 0rpx;
+.line{
+	margin-left: 10rpx;
 	padding: 0rpx;
 	border-bottom: 1px solid #ddd;
 }
@@ -46,22 +46,25 @@
    margin-top:220rpx;
 }
 
-.name1_class{ /*问题描述行的样式，主要定义字体相关的*/
-  font-size: 64rpx;
+.title1{ /*问题描述行的样式，主要定义字体相关的*/
+  font-size: 32rpx;
   font-family: "黑体";
   font-weight: bold;
-  color: #fff;
+  color: #000;
   text-align:left;
-  margin-left: 60rpx;
+  margin-left: 10rpx;
 }
 
-.name2_class{ /*问题描述行的样式，主要定义字体相关的*/
-  font-size: 64rpx;
+.title2{ /*问题描述行的样式，主要定义字体相关的*/
+  font-size: 30rpx;
   font-family: "黑体";
   font-weight: bold;
-  color: #fff;
-  text-align:right;
-  margin-right: 60rpx;
+  color: #999;
+  text-align:left;
+  margin-left: 10rpx;
+}
+.mini-btn1 {
+  margin-right: 20rpx;
 }
 
 .btn { /*这句是按钮的样式，核心是第一句，宽度不要沾满整行*/

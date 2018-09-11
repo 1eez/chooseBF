@@ -7,6 +7,7 @@ Page({
   data: {
     openid: '',
     myList: [],
+    Fsid:'',
   },
 
   /**
@@ -41,10 +42,48 @@ Page({
           page.setData({
             myList: res2.data.listArr,
           })
-          console.log(res2.data.listArr)
-          console.log(page.data.myList)
         }
       })
+  },
+
+  viewTest: function(e) {
+    var page = this
+    page.setData({
+      Fsid: parseInt(e.currentTarget.dataset.index)
+    })
+    wx.redirectTo({
+      url: '../result/result?Fsid=' + page.data.Fsid + '&openid=' + page.data.openid
+    })
+  },
+
+  delTest: function(e) {
+    var page = this
+    page.setData({
+      Fsid: parseInt(e.currentTarget.dataset.index)
+    })
+    wx.showModal({
+      title: '确定删除',
+      content: '你确定要删除这条测试吗？',
+      success: function (res) {
+        if (res.confirm) {
+          wx.request({
+            url: 'https://love.nidele.com/delTest.php',
+            data: {
+              openid: page.data.openid,
+              Fsid: page.data.Fsid,
+            },
+            success: function (res2) {
+              page.setData({
+                myList: res2.data.listArr,
+              })
+            }
+          })
+        } else if (res.cancel) {
+          
+        }
+      }
+    })
+
   },
 
   /**

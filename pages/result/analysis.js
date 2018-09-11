@@ -54,7 +54,7 @@ Page({
       },
       success: function (res2) {
         wx.redirectTo({
-          url: 'result?Fsid='+ page.data.Fsid
+          url: 'result?Fsid='+ page.data.Fsid +'&openid=' + page.data.openid
         })
       }
     })

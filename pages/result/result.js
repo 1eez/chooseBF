@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    openid: '',
     Fsid: '',
     name1: '',
     name2: '',
@@ -21,6 +22,7 @@ Page({
     var page = this
     page.setData({
       Fsid: options.Fsid,
+      openid: options.openid,
     })
     wx.request({
       url: 'https://love.nidele.com/getScore.php',
@@ -39,6 +41,12 @@ Page({
       }
     })
 
+  },
+
+  backMyList: function () {
+    wx.redirectTo({
+      url: '../mylist/mylist?openid=' + this.data.openid
+    })
   },
 
   /**
