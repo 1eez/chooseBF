@@ -25,7 +25,7 @@ Page({
       openid: options.openid,
     })
     wx.request({
-      url: 'https://love.nidele.com/getScore.php',
+      url: app.globalData.domain + 'getScore.php',
       data: {
         Fsid: options.Fsid,
       },

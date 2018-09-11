@@ -5,35 +5,62 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
-    // 登录
-//    wx.login({
-//      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-//      }
-//    })
-    // 获取用户信息
-//    wx.getSetting({
-//      success: res => {
-//        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-//          wx.getUserInfo({
-//            success: res => {
-              // 可以将 res 发送给后台解码出 unionId
-//              this.globalData.userInfo = res.userInfo
-
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-//              if (this.userInfoReadyCallback) {
-//                this.userInfoReadyCallback(res)
-//              }
-//            }
-//          })
-//        }
-//      }
-//    })
   },
+
+  route: function (openid) {
+    var page = this
+    wx.request({
+      url: page.globalData.domain + 'route.php',
+      data: {
+        openid: openid,
+      },
+      success: function (res3) {
+        console.log('route over, Result: ' + res3.data.Result)
+        console.log('route over, openid: ' + openid)
+
+        if (res3.data.Result == 'NAME1') {
+          wx.redirectTo({
+            url: '../name/name1?openid=' + openid
+          })
+        }
+
+        if (res3.data.Result == 'QUESTION1') {
+          wx.redirectTo({
+            url: '../question/question?openid=' + openid + '&Fsid=' + res3.data.Fsid + '&name=' + res3.data.Fsname
+          })
+        }
+
+        if (res3.data.Result == 'NAME2') {
+          wx.redirectTo({
+            url: '../name/name2?openid=' + openid + '&Fsid=' + res3.data.Fsid
+          })
+        }
+
+        if (res3.data.Result == 'QUESTION2') {
+          wx.redirectTo({
+            url: '../question/question?openid=' + openid + '&Fsid=' + res3.data.Fsid + '&name=' + res3.data.Fsname
+          })
+        }
+
+        if (res3.data.Result == 'ANALYSIS') {
+          wx.redirectTo({
+            url: '../result/analysis?openid=' + openid + '&Fsid=' + res3.data.Fsid
+          })
+        }
+
+        if (res3.data.Result == 'RESULT') {
+          wx.redirectTo({
+            url: '../mylist/mylist?openid=' + openid
+          })
+        }
+
+      }
+
+    })
+  },
+
   globalData: {
-    userInfo: null
+    userInfo: null,
+    domain:'https://localhost/',
   }
 })

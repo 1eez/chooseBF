@@ -12,7 +12,7 @@
   background-position: center 0;
   background-size:100%;
   -moz-background-size:100% 100%;
-  background-image: url(https://love.nidele.com/images/mylistbg.jpg)
+  background-image: url(https://localhost/images/mylistbg.jpg)
 }
 
 .line{
@@ -34,10 +34,16 @@
 	flex-direction: row;
 }
 
-.list_view { /*问题描述行的样式，最关键是最后一行表示距离上面多远*/
+.list_all { /*问题描述行的样式，最关键是最后一行表示距离上面多远*/
    display: flex;
    flex-direction: column;
    margin-top:250rpx;
+}
+
+.list_view { /*问题描述行的样式，最关键是最后一行表示距离上面多远*/
+   display: flex;
+   flex-direction: column;
+   margin-top:20rpx;
 }
 
 .name2_view { /*问题描述行的样式，最关键是最后一行表示距离上面多远*/

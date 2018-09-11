@@ -2,6 +2,8 @@
 //微信小程序通过background - image设置背景：只支持线上图片和base64图片，不支持本地图片；base64图片设置步骤如下：
 //在网站http://imgbase64.duoshitong.com/上将图片转成base64格式的文本
 
+const app = getApp()
+
 Page({
   data: {
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -36,7 +38,7 @@ Page({
       success: function (res1) {  //login success
         if (res1.code) {
           wx.request({
-            url: 'https://love.nidele.com/getOpenid.php',
+            url: app.globalData.domain + 'getOpenid.php',
             data: {
               code: res1.code
             },
@@ -50,9 +52,9 @@ Page({
                 Fucity: e.detail.userInfo.city,
                 Fulang: e.detail.userInfo.language,
               })
-              wx.redirectTo({
-                url: '../name/name1?openid=' + page.data.openid
-              })
+
+              //根据路由规则跳转到对应页面
+              app.route(page.data.openid)
 
               wx.hideLoading()
 
@@ -73,7 +75,7 @@ Page({
                       })
 
                       wx.request({
-                        url: 'https://love.nidele.com/addUser.php',
+                        url: app.globalData.domain + 'addUser.php',
                         data: {
                           openid: page.data.openid,
                           Funickname: page.data.Funickname,

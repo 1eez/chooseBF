@@ -1,12 +1,12 @@
 <!--pages/mylist/mylist.wxml-->
 <view class="web_bg">
 
-
+<view class="list_all">
   <view wx:for-items="{{myList}}" wx:key="{{item.id}}">
 			<view class="line list_view flex-wrap flex-direction-row" data-dish="{{item.id}}">
 				<view class="flex-item">
-					<text class="title1">测试{{item.Fsid}}：{{item.Fsname1}} vs {{item.Fsname2}}\n</text>
-          <text class="title2">　　　（{{item.Fsage1}}岁 vs {{item.Fsage2}}岁）</text>
+					<text class="title1">　{{item.Fsname1}} vs {{item.Fsname2}}\n</text>
+          <text class="title2">　（{{item.Fsage1}}岁 vs {{item.Fsage2}}岁）</text>
         </view>
 
 				  <view class="add-btn">
@@ -17,6 +17,7 @@
 			</view>
 
 	</view>
+</view>
 
     <button class="btn" hover-class="btn_hover" bindtap="startAgain">再测一次</button>
 

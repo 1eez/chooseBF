@@ -1,3 +1,6 @@
+
+const app = getApp()
+
 Page({
 
   /**
@@ -23,7 +26,7 @@ Page({
       console.log(page.data.Nickname),
 
     wx.request({
-      url: 'https://love.nidele.com/getQuestion.php',
+      url: app.globalData.domain + 'getQuestion.php',
       data: {
         Fdsid: page.data.Fsid,
         Fdname: page.data.Nickname,
@@ -49,7 +52,7 @@ Page({
       Faid: parseInt(e.currentTarget.dataset.index)
     })
     wx.request({
-      url: 'https://love.nidele.com/addAnswer.php',
+      url: app.globalData.domain + 'addAnswer.php',
       data: {
         Fdsid: page.data.Fsid,
         Fdname: page.data.Nickname,
@@ -63,7 +66,7 @@ Page({
           console.log(page.data.Nickname),
 
             wx.request({
-              url: 'https://love.nidele.com/getQuestion.php',
+              url: app.globalData.domain + 'getQuestion.php',
               data: {
                 Fdsid: page.data.Fsid,
                 Fdname: page.data.Nickname,
@@ -81,9 +84,10 @@ Page({
                 }
                 if (res2.data.Result == 'EMPTY') {
                   console.log('getQ = EMPTY' + page.data.openid)
-                  wx.redirectTo({
-                    url: '../name/name2?openid=' + page.data.openid + '&Fsid=' + page.data.Fsid + '&name=' + page.data.Nickname
-                  })
+
+                  //根据路由规则跳转到对应页面
+                  app.route(page.data.openid)
+                  
                 }
 
               }

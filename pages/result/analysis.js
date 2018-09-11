@@ -1,4 +1,7 @@
 // pages/result/analysis.js
+
+const app = getApp()
+
 Page({
 
   /**
@@ -28,7 +31,7 @@ Page({
     console.log('analysis onload over: ' + options.Fsid)
     var page = this
     wx.request({
-      url: 'https://love.nidele.com/get2Name.php',
+      url: app.globalData.domain + 'get2Name.php',
       data: {
         openid: page.data.openid,
         Fsid: page.data.Fsid,
@@ -48,7 +51,7 @@ Page({
   getResult: function () {
     var page = this
     wx.request({
-      url: 'https://love.nidele.com/getResult.php',
+      url: app.globalData.domain + 'getResult.php',
       data: {
         Fsid: page.data.Fsid,
       },

@@ -1,4 +1,7 @@
 // pages/name/name.js
+
+const app = getApp()
+
 Page({
 
   /**
@@ -15,7 +18,7 @@ Page({
   GetRndName: function() { //获得随机的男性代号
     var page = this
     wx.request({
-      url: 'https://love.nidele.com/getNick.php',
+      url: app.globalData.domain + 'getNick.php',
       data: {
         sex: 'male'
       },
@@ -66,7 +69,7 @@ Page({
     })
         
     wx.request({
-      url: 'https://love.nidele.com/addSummary.php',
+      url: app.globalData.domain + 'addSummary.php',
       data: {
         openid: page.data.openid,
         Fsname1: page.data.NickName,
@@ -77,9 +80,10 @@ Page({
           Fsid: res2.data.Fsid,
         })
         console.log(res2.data)
-        wx.redirectTo({
-          url: '../question/question?openid=' + page.data.openid + '&Fsid=' + page.data.Fsid + '&name=' + page.data.NickName
-        })
+
+        //根据路由规则跳转到对应页面
+        app.route(page.data.openid)
+
       }
     })
 
@@ -107,47 +111,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var page = this
-    wx.request({
-      url: 'https://love.nidele.com/endOrNot.php',
-      data: {
-        openid: page.data.openid,
-      },
-      success: function (res3) {
-        console.log('endOrNot over, Result: ' + res3.data.Result)
-        if (res3.data.Result == 'QUESTION1') {
-          wx.redirectTo({
-            url: '../question/question?openid=' + page.data.openid + '&Fsid=' + res3.data.Fsid + '&name=' + res3.data.Fsname
-          })
-        }
 
-        if (res3.data.Result == 'NAME2') {
-          wx.redirectTo({
-            url: '../name2?openid=' + page.data.openid + '&Fsid=' + res3.data.Fsid
-          })
-        }
-
-        if (res3.data.Result == 'QUESTION2') {
-          wx.redirectTo({
-            url: '../question/question?openid=' + page.data.openid + '&Fsid=' + res3.data.Fsid + '&name=' + res3.data.Fsname
-          })
-        }
-
-        if (res3.data.Result == 'ANALYSIS') {
-          wx.redirectTo({
-            url: '../result/analysis?openid=' + page.data.openid + '&Fsid=' + res3.data.Fsid
-          })
-        }
-
-        if (res3.data.Result == 'RESULT') {
-          wx.redirectTo({
-            url: '../mylist/mylist?openid=' + page.data.openid
-          })
-        }
-
-      }
-
-    })
   },
 
   /**

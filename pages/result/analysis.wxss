@@ -12,7 +12,7 @@
   background-position: center 0;
   background-size:100%;
   -moz-background-size:100% 100%;
-  background-image: url(https://love.nidele.com/images/analysisbg.jpg)
+  background-image: url(https://localhost/images/analysisbg.jpg)
 }
 
 .name1_view { /*问题描述行的样式，最关键是最后一行表示距离上面多远*/

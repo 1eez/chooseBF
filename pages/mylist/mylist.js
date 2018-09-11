@@ -1,4 +1,7 @@
 // pages/mylist/mylist.js
+
+const app = getApp()
+
 Page({
 
   /**
@@ -34,7 +37,7 @@ Page({
     var page = this
 
       wx.request({
-        url: 'https://love.nidele.com/getMylist.php',
+        url: app.globalData.domain + 'getMylist.php',
         data: {
           openid: page.data.openid,
         },
@@ -67,7 +70,7 @@ Page({
       success: function (res) {
         if (res.confirm) {
           wx.request({
-            url: 'https://love.nidele.com/delTest.php',
+            url: app.globalData.domain + 'delTest.php',
             data: {
               openid: page.data.openid,
               Fsid: page.data.Fsid,
@@ -84,6 +87,12 @@ Page({
       }
     })
 
+  },
+  
+  startAgain:function () {
+    wx.redirectTo({
+      url: '../name/name1?openid=' + this.data.openid
+    })
   },
 
   /**

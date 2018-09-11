@@ -12,7 +12,7 @@
   background-position: center 0;
   background-size:100%;
   -moz-background-size:100% 100%;
-  background-image: url(https://love.nidele.com/images/name2bg.jpg)
+  background-image: url(https://localhost/images/name2bg.jpg)
 }
 
 .Text1_view { /*第一行文字样式 为了把按钮放在距离顶部200的位置，核心是最后一句*/
