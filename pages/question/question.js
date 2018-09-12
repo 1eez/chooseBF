@@ -10,6 +10,7 @@ Page({
   
     Result: '',
     Fqid: '',
+    Fqmax:'',
     Fqtext:'',
     Faid:'',
     resultObj: {},
@@ -17,6 +18,7 @@ Page({
     openid: '',
     Fsid: '1',
     Nickname: '',
+    Fpercent: 0,
 
   },
 
@@ -32,15 +34,25 @@ Page({
         Fdname: page.data.Nickname,
       },
       success: function (res2) {
-        console.log('getQuestion success')
         console.log(res2.data)
-        page.setData({
-          resultObj: res2.data,
-          Result: res2.data.Result,
-          Fqid: res2.data.Fqid,
-          Fqtext: res2.data.Fqtext,
-          answerList: res2.data.answerArr,
-        })
+        if (res2.data.Result == 'SUCCESS') {
+          page.setData({
+            resultObj: res2.data,
+            Result: res2.data.Result,
+            Fqid: res2.data.Fqid,
+            Fqmax: res2.data.Fqmax,
+            Fpercent: (res2.data.Fqid / res2.data.Fqmax * 100),
+            Fqtext: res2.data.Fqtext,
+            answerList: res2.data.answerArr,
+          })
+        }
+        if (res2.data.Result == 'EMPTY') {
+          console.log('getQ = EMPTY' + page.data.openid)
+
+          //根据路由规则跳转到对应页面
+          app.route(page.data.openid)
+        }
+
       }
     })
 
@@ -62,41 +74,35 @@ Page({
       success: function (res2) {
         console.log(res2.data)
         if (res2.data.Result == 'ADD') {
-          console.log('SendA'+page.data.Fsid),
+          console.log('SendA' + page.data.Fsid),
           console.log(page.data.Nickname),
-
-            wx.request({
-              url: app.globalData.domain + 'getQuestion.php',
-              data: {
-                Fdsid: page.data.Fsid,
-                Fdname: page.data.Nickname,
-              },
-              success: function (res2) {
-                console.log(res2.data)
-                if (res2.data.Result == 'SUCCESS') {
-                  page.setData({
-                    resultObj: res2.data,
-                    Result: res2.data.Result,
-                    Fqid: res2.data.Fqid,
-                    Fqtext: res2.data.Fqtext,
-                    answerList: res2.data.answerArr,
-                  })
-                }
-                if (res2.data.Result == 'EMPTY') {
-                  console.log('getQ = EMPTY' + page.data.openid)
-
-                  //根据路由规则跳转到对应页面
-                  app.route(page.data.openid)
-                  
-                }
-
-              }
-            })
-
+          page.getQuestion()
         }
       }
     })
-    
+
+  },
+
+  noAnswer: function () {
+    var page = this
+
+    wx.request({
+      url: app.globalData.domain + 'noAnswer.php',
+      data: {
+        Fdsid: page.data.Fsid,
+        Fdname: page.data.Nickname,
+        Fdqid: page.data.Fqid,
+      },
+      success: function (res2) {
+        console.log(res2.data)
+        if (res2.data.Result == 'ADD') {
+          console.log('SendNo' + page.data.Fsid),
+            console.log(page.data.Nickname),
+            page.getQuestion()
+        }
+      }
+    })
+
   },
 
   /**

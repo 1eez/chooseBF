@@ -1,6 +1,10 @@
 <!--pages/question/question.wxml-->
 <view class="web_bg">
 
+  <view class="progress">
+	  <view class="bar" style="width: {{Fpercent}}%;">第{{Fqid}}题 / 共{{Fqmax}}题</view>
+  </view>
+
   <view class="question1_view">
     <view class="question1_class">
       {{Nickname}}，{{Fqtext}}
@@ -13,9 +17,8 @@
 
   </view>
 
-  <view class="remark1_view">
+  <view class="remark1_view" bindtap="noAnswer">
       这不是我关心的考核项
   </view>
-
 
 </view>

@@ -1,4 +1,7 @@
 // pages/result/result.js
+
+const app = getApp()
+
 Page({
 
   /**
