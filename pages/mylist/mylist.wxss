@@ -1,22 +1,14 @@
 /* pages/mylist/mylist.wxss */
-.web_bg {  /*这句是定义背景图片*/
-  position:fixed;
-  top: 0;
-  left: 0;
+.img {
+  display: flex;
+  flex-direction: column;
+  margin-top: -120rpx;
+  margin-left: 0rpx;
   width:100%;
-  height:100%;
-  z-index:-10;
-
-  background-color: #fff;
-  background-repeat: no-repeat;
-  background-position: center 0;
-  background-size:100%;
-  -moz-background-size:100% 100%;
-  background-image: url(https://localhost/images/mylistbg.jpg)
 }
 
 .line{
-	margin-left: 10rpx;
+	margin-left: 0rpx;
 	padding: 0rpx;
 	border-bottom: 1px solid #ddd;
 }
@@ -37,7 +29,7 @@
 .list_all { /*问题描述行的样式，最关键是最后一行表示距离上面多远*/
    display: flex;
    flex-direction: column;
-   margin-top:250rpx;
+   margin-top:-90rpx;
 }
 
 .list_view { /*问题描述行的样式，最关键是最后一行表示距离上面多远*/
@@ -46,13 +38,7 @@
    margin-top:20rpx;
 }
 
-.name2_view { /*问题描述行的样式，最关键是最后一行表示距离上面多远*/
-   display: flex;
-   flex-direction: column;
-   margin-top:220rpx;
-}
-
-.title1{ /*问题描述行的样式，主要定义字体相关的*/
+.title1{ 
   font-size: 32rpx;
   font-family: "黑体";
   font-weight: bold;
@@ -61,7 +47,7 @@
   margin-left: 10rpx;
 }
 
-.title2{ /*问题描述行的样式，主要定义字体相关的*/
+.title2{ 
   font-size: 30rpx;
   font-family: "黑体";
   font-weight: bold;
@@ -69,6 +55,7 @@
   text-align:left;
   margin-left: 10rpx;
 }
+
 .mini-btn1 {
   margin-right: 20rpx;
 }
@@ -78,7 +65,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top:250rpx;
+  margin-top:70rpx;
   font-size: 32rpx;
   font-family: "黑体";
   text-align:left;
