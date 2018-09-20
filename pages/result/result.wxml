@@ -1,17 +1,24 @@
-<view class="web_bg">
+<image class="img" mode="aspectFit" src="../../images/mylistbg.jpg"></image>
 
   <view class="name1_view">
     <view class="name1_class">
-      {{name1}}：{{score1}}分
+      {{name1}}（{{age1}}岁）
+    </view>
+    <view class="score1_class">
+      {{score1}}分
     </view>
   </view>
 
   <view class="name2_view">
     <view class="name2_class">
-      {{name2}}：{{score2}}分
+      {{name2}}（{{age2}}岁）
+    </view>
+    <view class="score2_class">
+      {{score2}}分
     </view>
   </view>
 
+  <canvas canvas-id="striptype-canvas" id="striptype-canvas" style="height:800rpx;"/> 
+
     <button class="btn" hover-class="btn_hover" bindtap="backMyList">返回我的列表</button>
 
-</view>
